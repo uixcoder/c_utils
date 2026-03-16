@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/include",
+        "/usr/local/include"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": [
+        "-Wall",
+        "-Wextra",
+        "-fsanitize=address"
+      ]
+    }
+  ],
+  "version": 4
+}

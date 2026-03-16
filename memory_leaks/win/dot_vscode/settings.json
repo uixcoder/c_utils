@@ -1,0 +1,25 @@
+{
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+  
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  
+  "errorLens.enabled": true,
+  "errorLens.fontWeight": "bold",
+  
+  "terminal.integrated.defaultProfile.linux": "bash",
+  
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "on",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  
+  "files.associations": {
+    "*.c": "c",
+    "*.h": "c"
+  }
+}

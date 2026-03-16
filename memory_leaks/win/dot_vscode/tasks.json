@@ -1,0 +1,152 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build with AddressSanitizer",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-g",
+        "-O0",
+        "-fsanitize=address",
+        "-fsanitize=leak",
+        "-fno-omit-frame-pointer",
+        "-Wall",
+        "-Wextra",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}_asan"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Компіляція з AddressSanitizer",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Build Debug",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-g",
+        "-O0",
+        "-Wall",
+        "-Wextra",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}_debug"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "Звичайна debug компіляція"
+    },
+    {
+      "label": "Run ASan (Terminal)",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}_asan",
+      "dependsOn": ["Build with AddressSanitizer"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "detail": "Запустити програму з AddressSanitizer"
+    },
+    {
+      "label": "Run Valgrind Memcheck",
+      "type": "shell",
+      "command": "valgrind",
+      "args": [
+        "--leak-check=full",
+        "--show-leak-kinds=all",
+        "--track-origins=yes",
+        "--verbose",
+        "--log-file=${fileDirname}/valgrind-out.txt",
+        "${fileDirname}/${fileBasenameNoExtension}_debug"
+      ],
+      "dependsOn": ["Build Debug"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Запуск Valgrind (результат у valgrind-out.txt)"
+    },
+    {
+      "label": "Run Valgrind Quick",
+      "type": "shell",
+      "command": "valgrind",
+      "args": [
+        "--leak-check=yes",
+        "${fileDirname}/${fileBasenameNoExtension}_debug"
+      ],
+      "dependsOn": ["Build Debug"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "detail": "Швидкий запуск Valgrind (результат в терміналі)"
+    },
+    {
+      "label": "Static Analysis - Cppcheck",
+      "type": "shell",
+      "command": "cppcheck",
+      "args": [
+        "--enable=all",
+        "--inconclusive",
+        "--std=c11",
+        "${file}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Статичний аналіз з Cppcheck"
+    },
+    {
+      "label": "Clang Static Analyzer",
+      "type": "shell",
+      "command": "clang",
+      "args": [
+        "--analyze",
+        "-Xanalyzer",
+        "-analyzer-output=text",
+        "${file}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Статичний аналіз з Clang"
+    },
+    {
+      "label": "Clean Build Files",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-f",
+        "${fileDirname}/${fileBasenameNoExtension}_asan",
+        "${fileDirname}/${fileBasenameNoExtension}_debug",
+        "${fileDirname}/valgrind-out.txt",
+        "${fileDirname}/*.plist"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent"
+      },
+      "detail": "Видалити скомпільовані файли"
+    }
+  ]
+}
