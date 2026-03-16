@@ -11,7 +11,7 @@
   "errorLens.enabled": true,
   "errorLens.fontWeight": "bold",
   
-  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   
   "editor.rulers": [80, 120],
   "editor.wordWrap": "on",
