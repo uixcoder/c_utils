@@ -44,7 +44,7 @@ VS Code (хост) ──── Dev Containers ────▶ термінал 
 
 ---
 
-## 💻 Крок 2: Встановлення VS Code
+## 💻 Крок 1: Встановлення VS Code
 
 <details>
 <summary><b>🐧 Linux</b></summary>
