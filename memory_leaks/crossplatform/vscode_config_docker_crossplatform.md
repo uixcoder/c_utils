@@ -44,7 +44,52 @@ VS Code (хост) ──── Dev Containers ────▶ термінал 
 
 ---
 
-## 🖥️ Крок 1: Встановлення Docker — оберіть свою ОС
+## 💻 Крок 2: Встановлення VS Code
+
+<details>
+<summary><b>🐧 Linux</b></summary>
+
+```bash
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] \
+  https://packages.microsoft.com/repos/code stable main" \
+  | sudo tee /etc/apt/sources.list.d/vscode.list
+
+sudo apt update && sudo apt install -y code
+```
+
+Або через Snap: `sudo snap install code --classic`
+
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+winget install -e --id Microsoft.VisualStudioCode
+```
+
+Або завантажте з https://code.visualstudio.com/
+
+</details>
+
+<details>
+<summary><b>🍎 macOS</b></summary>
+
+```bash
+brew install --cask visual-studio-code
+```
+
+Або завантажте з https://code.visualstudio.com/
+
+</details>
+
+---
+
+## 🖥️ Крок 2: Встановлення Docker — оберіть свою ОС
 
 <!-- ======================================================== -->
 <details>
@@ -321,51 +366,6 @@ docker run hello-world
 
 > **Примітка:** OrbStack автоматично запускається при старті macOS і зупиняє VM коли
 > Docker не використовується — батарея не витрачається даремно.
-
-</details>
-
----
-
-## 💻 Крок 2: Встановлення VS Code
-
-<details>
-<summary><b>🐧 Linux</b></summary>
-
-```bash
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \
-  | gpg --dearmor \
-  | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
-
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] \
-  https://packages.microsoft.com/repos/code stable main" \
-  | sudo tee /etc/apt/sources.list.d/vscode.list
-
-sudo apt update && sudo apt install -y code
-```
-
-Або через Snap: `sudo snap install code --classic`
-
-</details>
-
-<details>
-<summary><b>🪟 Windows</b></summary>
-
-```powershell
-winget install -e --id Microsoft.VisualStudioCode
-```
-
-Або завантажте з https://code.visualstudio.com/
-
-</details>
-
-<details>
-<summary><b>🍎 macOS</b></summary>
-
-```bash
-brew install --cask visual-studio-code
-```
-
-Або завантажте з https://code.visualstudio.com/
 
 </details>
 
